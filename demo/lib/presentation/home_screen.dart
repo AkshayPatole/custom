@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-
 import '../const/app_colors.dart';
 import '../const/app_strings.dart';
+import '../const/custom_button_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -16,9 +16,38 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Home Screen'),
+        centerTitle: true,
       ),
-      body: const Center(
-        child: Text(AppStrings.welcome,style: TextStyle(fontSize: 24,color: AppColors.orangeColor),),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text(
+              AppStrings.welcome,
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+                color: AppColors.orangeColor,
+              ),
+            ),
+            const SizedBox(height: 30),
+            
+            const CustomButton(),
+            
+            const SizedBox(height: 16),
+            
+            CustomButton(
+              text: 'Get Started',
+              icon: Icons.arrow_forward,
+              onPressed: () {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('Button Pressed!')),
+                );
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
