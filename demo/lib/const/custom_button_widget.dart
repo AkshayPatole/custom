@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'app_colors.dart';
+import 'app_strings.dart';
 
 class CustomButton extends StatelessWidget {
   final String? text;
@@ -28,8 +29,8 @@ class CustomButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: width,
-      height: height ?? 48.0,
+      width: width ?? double.infinity,
+      height: height ?? 55.0,
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
@@ -38,21 +39,22 @@ class CustomButton extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(borderRadius ?? 10.0),
           ),
-          elevation: 2,
+          elevation: 4,
+          shadowColor: (backgroundColor ?? AppColors.orangeColor).withOpacity(0.4),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,
           children: [
             if (icon != null) ...[
-              Icon(icon, size: (fontSize ?? 16.0) + 2, color: textColor ?? Colors.white),
+              Icon(icon, size: (fontSize ?? 18.0) + 2, color: textColor ?? Colors.white),
               const SizedBox(width: 8),
             ],
             Text(
-              text ?? 'Click Me',
+              text ?? AppStrings.defaultButtonText,
               style: TextStyle(
-                fontSize: fontSize ?? 16.0,
-                fontWeight: FontWeight.w600,
+                fontSize: fontSize ?? 20.0,
+                fontWeight: FontWeight.bold,
                 color: textColor ?? Colors.white,
               ),
             ),
