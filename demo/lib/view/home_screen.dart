@@ -2,15 +2,23 @@ import 'package:flutter/material.dart';
 import '../const/app_colors.dart';
 import '../const/app_strings.dart';
 import '../const/custom_button_widget.dart';
+import 'post_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
+  
+  
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  @override
+   void initState(){
+    super.initState();
+   }
+   
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,6 +41,10 @@ class _HomeScreenState extends State<HomeScreen> {
               CustomButton(
                 text: AppStrings.signIn,
                 onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const PostScreen()),
+                  );
                 },
               ),
             ],
