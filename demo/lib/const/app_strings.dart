@@ -9,4 +9,13 @@ class AppStrings {
   static const String createNewAccount = "Create new account";
   static const String orContinueWith = "Or continue with";
   static const String defaultButtonText = "Click Me";
+  
+  // Splash Screen Strings
+  static const String splashTitle = "App Design";
+  static const String splashTagline = "Build beautiful Flutter apps";
+
+  // Posts Screen Strings
+  static const String postsTitle = "Posts (GET API)";
+  static const String noPostsFound = "No posts found";
+  static const String retry = "Retry";
 }

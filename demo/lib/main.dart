@@ -1,27 +1,19 @@
 import 'package:flutter/material.dart';
-
-import 'presentation/home_screen.dart';
-
-
+import 'view/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
-
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter custom Demo',
-      home: HomeScreen()
+      debugShowCheckedModeBanner: false,
+      title: 'Flutter Advance Learning',
+      home: const SplashScreen(),
     );
   }
 }

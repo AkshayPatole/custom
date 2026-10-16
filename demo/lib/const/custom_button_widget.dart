@@ -40,7 +40,7 @@ class CustomButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(borderRadius ?? 10.0),
           ),
           elevation: 4,
-          shadowColor: (backgroundColor ?? AppColors.orangeColor).withOpacity(0.4),
+          shadowColor: (backgroundColor ?? AppColors.orangeColor).withValues(alpha: 0.4),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
