@@ -1,11 +1,11 @@
 // Step 3: View (UI Screen)
-// View me hum Repository call karte hain aur FutureBuilder ke through data UI me render karte hain.
 
 import 'package:flutter/material.dart';
 import '../const/app_colors.dart';
 import '../const/app_strings.dart';
 import '../model/post_model.dart';
 import '../repo/post_repository.dart';
+import 'create_post_screen.dart';
 
 class PostScreen extends StatefulWidget {
   const PostScreen({super.key});
@@ -69,6 +69,18 @@ class _PostScreenState extends State<PostScreen> {
             return _buildPostList(posts);
           },
         ),
+      ),
+      floatingActionButton: FloatingActionButton.extended(
+        backgroundColor: AppColors.orangeColor,
+        foregroundColor: AppColors.whiteColor,
+        icon: const Icon(Icons.add),
+        label: const Text('Create Post'),
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const CreatePostScreen()),
+          );
+        },
       ),
     );
   }
