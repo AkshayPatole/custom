@@ -18,4 +18,13 @@ class AppStrings {
   static const String postsTitle = "Posts (GET API)";
   static const String noPostsFound = "No posts found";
   static const String retry = "Retry";
+
+  // Create Post (POST API) Strings
+  static const String createPostTitle = "Create Post (POST API)";
+  static const String enterPostTitle = "Enter post title";
+  static const String enterPostBody = "Enter post description / body";
+  static const String submitPost = "Submit (POST API)";
+  static const String postCreatedSuccess = "Post created successfully!";
+  static const String fillAllFields = "Please fill all fields!";
+  static const String responseResult = "Server Response (201 Created):";
 }
