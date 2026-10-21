@@ -6,6 +6,7 @@ import '../const/app_strings.dart';
 import '../model/post_model.dart';
 import '../repo/post_repository.dart';
 import 'create_post_screen.dart';
+import 'update_post_screen.dart';
 
 class PostScreen extends StatefulWidget {
   const PostScreen({super.key});
@@ -141,9 +142,37 @@ class _PostScreenState extends State<PostScreen> {
                   ),
                 ),
               ),
-              Text(
-                'User: ${post.userId}',
-                style: const TextStyle(color: AppColors.blackColor, fontSize: 12),
+              Row(
+                children: [
+                  Text(
+                    'User: ${post.userId}',
+                    style: const TextStyle(color: AppColors.blackColor, fontSize: 12),
+                  ),
+                  const SizedBox(width: 8),
+                  InkWell(
+                    borderRadius: BorderRadius.circular(15),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => UpdatePostScreen(post: post),
+                        ),
+                      );
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.all(4),
+                      decoration: BoxDecoration(
+                        color: AppColors.orangeColor.withValues(alpha: 0.1),
+                        shape: BoxShape.circle,
+                      ),
+                      child: const Icon(
+                        Icons.edit,
+                        size: 15,
+                        color: AppColors.orangeColor,
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ],
           ),

@@ -44,4 +44,32 @@ class PostRepository {
       throw Exception('Failed to create post (Status Code: ${response.statusCode})');
     }
   }
+
+  // 3. PUT API: Update an existing post on the server
+  Future<GetAllPostsModel> updatePost({
+    required int id,
+    required String title,
+    required String body,
+    int userId = 1,
+  }) async {
+    final response = await http.put(
+      Uri.parse('$apiUrl/$id'),
+      headers: {
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode({
+        'id': id,
+        'title': title,
+        'body': body,
+        'userId': userId,
+      }),
+    );
+
+    if (response.statusCode == 200) {
+      final dynamic data = jsonDecode(response.body);
+      return GetAllPostsModel.fromJson(data);
+    } else {
+      throw Exception('Failed to update post (Status Code: ${response.statusCode})');
+    }
+  }
 }

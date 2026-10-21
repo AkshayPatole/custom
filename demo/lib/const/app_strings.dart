@@ -27,4 +27,10 @@ class AppStrings {
   static const String postCreatedSuccess = "Post created successfully!";
   static const String fillAllFields = "Please fill all fields!";
   static const String responseResult = "Server Response (201 Created):";
+
+  // Update Post (PUT API) Strings
+  static const String updatePostTitle = "Update Post (PUT API)";
+  static const String updatePost = "Update (PUT API)";
+  static const String postUpdatedSuccess = "Post updated successfully!";
+  static const String putResponseResult = "Server Response (200 OK):";
 }
