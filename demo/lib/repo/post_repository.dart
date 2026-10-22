@@ -72,4 +72,14 @@ class PostRepository {
       throw Exception('Failed to update post (Status Code: ${response.statusCode})');
     }
   }
+
+  // 4. DELETE API: Delete
+  Future<bool> deletePost(int id) async {
+    final response = await http.delete(Uri.parse('$apiUrl/$id'));
+    if (response.statusCode == 200) {
+      return true;
+    } else {
+      throw Exception('Failed to delete post (Status Code: ${response.statusCode})');
+    }
+  }
 }

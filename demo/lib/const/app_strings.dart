@@ -33,4 +33,7 @@ class AppStrings {
   static const String updatePost = "Update (PUT API)";
   static const String postUpdatedSuccess = "Post updated successfully!";
   static const String putResponseResult = "Server Response (200 OK):";
+
+  // Delete Post (DELETE API) Strings
+  static const String postDeletedSuccess = "Post deleted successfully!";
 }
