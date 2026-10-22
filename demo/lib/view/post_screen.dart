@@ -29,6 +29,30 @@ class _PostScreenState extends State<PostScreen> {
     _futurePosts = _postRepository.fetchPosts();
   }
 
+  // DELETE API Call Function
+  Future<void> _deletePost(int id, List<GetAllPostsModel> posts) async {
+    try {
+      await _postRepository.deletePost(id);
+      setState(() {
+        posts.removeWhere((item) => item.id == id);
+      });
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('${AppStrings.postDeletedSuccess} (ID: #$id)'),
+            backgroundColor: AppColors.orangeColor,
+          ),
+        );
+      }
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Error: $e'), backgroundColor: AppColors.orangeColor),
+        );
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -100,12 +124,12 @@ class _PostScreenState extends State<PostScreen> {
       padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
       itemCount: posts.length,
       itemBuilder: (context, index) {
-        return _buildPostItem(posts[index]);
+        return _buildPostItem(posts[index], posts);
       },
     );
   }
    //  Single Post Card Item (Success State)
-  Widget _buildPostItem(GetAllPostsModel post) {
+  Widget _buildPostItem(GetAllPostsModel post, List<GetAllPostsModel> posts) {
     return Container(
       margin: const EdgeInsets.only(bottom: 12.0),
       padding: const EdgeInsets.all(16.0),
@@ -167,6 +191,23 @@ class _PostScreenState extends State<PostScreen> {
                       ),
                       child: const Icon(
                         Icons.edit,
+                        size: 15,
+                        color: AppColors.orangeColor,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 8),
+                  InkWell(
+                    borderRadius: BorderRadius.circular(15),
+                    onTap: () => _deletePost(post.id, posts),
+                    child: Container(
+                      padding: const EdgeInsets.all(4),
+                      decoration: BoxDecoration(
+                        color: AppColors.orangeColor.withValues(alpha: 0.1),
+                        shape: BoxShape.circle,
+                      ),
+                      child: const Icon(
+                        Icons.delete_outline,
                         size: 15,
                         color: AppColors.orangeColor,
                       ),
